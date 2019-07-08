@@ -2,5 +2,5 @@ package io.learnJava.MyXO.model;
 
 public enum Figure {
 
-    X, Y
+    X, O
 }
