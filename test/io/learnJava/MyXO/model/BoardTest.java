@@ -7,14 +7,14 @@ import static org.junit.Assert.*;
 public class BoardTest {
 
     @Test
-    public void testGetSize() throws Exception{
+    public void testGetSize() throws Exception {
         final Board board = new Board();
 
         assertEquals(3, board.getSize());
     }
 
     @Test
-    public void testSetFigure() throws Exception{
+    public void testSetFigure() throws Exception {
         final Board board = new Board();
         final Point inputPoint = new Point(0, 0);
         final Figure inputFigure = Figure.O;
@@ -26,7 +26,7 @@ public class BoardTest {
     }
 
     @Test
-    public void testGetFigureWhenFigureIsNotSet() throws Exception{
+    public void testGetFigureWhenFigureIsNotSet() throws Exception {
         final Board board = new Board();
         final Point inputPoint = new Point(0, 0);
 
@@ -36,44 +36,53 @@ public class BoardTest {
     }
 
     @Test
-    public void testGetFigureWhenXIsLessThenZero() throws Exception{
+    public void testGetFigureWhenXIsLessThenZero() throws Exception {
         final Board board = new Board();
         final Point inputPoint = new Point(-1, 0);
 
         try {
             board.getFigure(inputPoint);
             fail();
-        } catch(InvalidePointerException e) {}
+        } catch (InvalidePointerException e) {
+        }
     }
 
     @Test
-    public void testGetFigureWhenXIsMoreThenSize() throws Exception{
+    public void testGetFigureWhenXIsMoreThenSize() throws Exception {
         final Board board = new Board();
         final Point inputPoint = new Point(board.getSize() + 1, 0);
 
         try {
             board.getFigure(inputPoint);
             fail();
-        } catch(InvalidePointerException e) {}
+        } catch (InvalidePointerException e) {
+        }
     }
 
     @Test
-    public void testGetFigureWhenYIsMoreThenSize() throws Exception{
+    public void testGetFigureWhenYIsMoreThenSize() throws Exception {
         final Board board = new Board();
         final Point inputPoint = new Point(0, board.getSize() + 1);
 
         try {
             board.getFigure(inputPoint);
             fail();
-        } catch(InvalidePointerException e) {}
+        } catch (InvalidePointerException e) {
+        }
     }
 
+    @Test
+    public void testGetFigureWhenAlreadyAccupied() throws Exception {
+        final Board board = new Board();
+        final Point inputPoint = new Point(0, 0);
+        final Figure inputFigure = Figure.O
 
+        board.setFigure(inputFigure, inputFigure);
 
-
-
-
-
-
-
+        try {
+            board.setFigure(inputPoint, inputFigure);
+            fail();
+        } catch (AlreadyOccupiedException e) {
+        }
+    }
 }
