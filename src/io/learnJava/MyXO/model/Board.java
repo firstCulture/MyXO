@@ -1,6 +1,7 @@
 package io.learnJava.MyXO.model;
 
-import io.learnJava.MyXO.model.exceptions.XOExceptions;
+import io.learnJava.MyXO.model.exceptions.AlreadyOccupiedException;
+import io.learnJava.MyXO.model.exceptions.InvalidePointerException;
 
 import java.awt.*;
 
@@ -18,7 +19,13 @@ public class Board {
         return FIELD_SIZE;
     }
 
-    public Figure getFigure(final Point point) {
+    public Figure getFigure(final Point point) throws InvalidePointerException, AlreadyOccupiedException {
+        if (!checkPoint(point)) {
+            throw new InvalidePointerException();
+        }
+        if (board[point.x][point.y] != null) {
+            throw new AlreadyOccupiedException();
+        }
         return board[point.x][point.y];
     }
 
@@ -33,11 +40,6 @@ public class Board {
     private boolean checkCoordinate(final int coordinate) {
         return coordinate >= MIN_COORDINATE && coordinate < MAX_COORDINATE;
     }
-
-
-
-
-
 
 
 }
