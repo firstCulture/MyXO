@@ -1,7 +1,7 @@
 package io.learnJava.MyXO.model;
 
 import io.learnJava.MyXO.model.exceptions.AlreadyOccupiedException;
-import io.learnJava.MyXO.model.exceptions.InvalidePointerException;
+import io.learnJava.MyXO.model.exceptions.InvalidPointerException;
 
 import java.awt.*;
 
@@ -19,9 +19,9 @@ public class Board {
         return FIELD_SIZE;
     }
 
-    public Figure getFigure(final Point point) throws InvalidePointerException, AlreadyOccupiedException {
+    public Figure getFigure(final Point point) throws InvalidPointerException, AlreadyOccupiedException {
         if (!checkPoint(point)) {
-            throw new InvalidePointerException();
+            throw new InvalidPointerException();
         }
         if (board[point.x][point.y] != null) {
             throw new AlreadyOccupiedException();

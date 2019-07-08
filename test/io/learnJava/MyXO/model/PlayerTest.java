@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class BoardTest {
 
     @Test
-    public void getName() {
+    public void testGetName() throws Exception{
         final String inputValue = "Alex";
         final String expectedValue = inputValue;
 
@@ -19,7 +19,7 @@ public class BoardTest {
     }
 
     @Test
-    public void getFigure() {
+    public void testGetFigure() throws Exception{
         final Figure inputValue = Figure.X;
         final Figure expectedValue = inputValue;
 
