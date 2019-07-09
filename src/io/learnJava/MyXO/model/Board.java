@@ -19,17 +19,18 @@ public class Board {
         return FIELD_SIZE;
     }
 
-    public Figure getFigure(final Point point) throws InvalidPointerException, AlreadyOccupiedException {
+    public Figure getFigure(final Point point) throws InvalidPointerException {
         if (!checkPoint(point)) {
             throw new InvalidPointerException();
-        }
-        if (board[point.x][point.y] != null) {
-            throw new AlreadyOccupiedException();
         }
         return board[point.x][point.y];
     }
 
-    public void setFigure(final Point point, final Figure figure) {
+    public void setFigure(final Point point, final Figure figure) throws InvalidPointerException {
+
+        if (!checkPoint(point)) {
+            throw new InvalidPointerException();
+        }
         board[point.x][point.y] = figure;
     }
 
