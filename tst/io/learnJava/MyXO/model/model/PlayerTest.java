@@ -1,13 +1,15 @@
+package io.learnJava.MyXO.model.model;
+
 import io.learnJava.MyXO.model.Figure;
 import io.learnJava.MyXO.model.Player;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BoardTest {
+public class PlayerTest {
 
     @Test
-    public void testGetName() throws Exception{
+    public void testGetName(){
         final String inputValue = "Alex";
         final String expectedValue = inputValue;
 
@@ -19,7 +21,7 @@ public class BoardTest {
     }
 
     @Test
-    public void testGetFigure() throws Exception{
+    public void testGetFigure() {
         final Figure inputValue = Figure.X;
         final Figure expectedValue = inputValue;
 
