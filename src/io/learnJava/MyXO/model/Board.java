@@ -1,22 +1,25 @@
 package io.learnJava.MyXO.model;
 
-import io.learnJava.MyXO.model.exceptions.AlreadyOccupiedException;
 import io.learnJava.MyXO.model.exceptions.InvalidPointerException;
 
 import java.awt.*;
 
 public class Board {
 
-    private static final int FIELD_SIZE = 3;
-
     private static final int MIN_COORDINATE = 0;
 
-    private static final int MAX_COORDINATE = FIELD_SIZE;
+    private final Figure[][] board;
 
-    private final Figure[][] board = new Figure[FIELD_SIZE][FIELD_SIZE];
+    private final int boardSize;
+
+    public Board(final int boardSize) {
+        this.boardSize = boardSize;
+        board = new Figure[boardSize][boardSize];
+
+    }
 
     public int getSize() {
-        return FIELD_SIZE;
+        return boardSize;
     }
 
     public Figure getFigure(final Point point) throws InvalidPointerException {
@@ -35,11 +38,11 @@ public class Board {
     }
 
     private boolean checkPoint(final Point point) {
-        return checkCoordinate(point.x) && checkCoordinate(point.y);
+        return checkCoordinate(point.x, board.length) && checkCoordinate(point.y, board[point.x].length);
     }
 
-    private boolean checkCoordinate(final int coordinate) {
-        return coordinate >= MIN_COORDINATE && coordinate < MAX_COORDINATE;
+    private boolean checkCoordinate(final int coordinate, final int maxCoordinate) {
+        return coordinate >= MIN_COORDINATE && coordinate < maxCoordinate;
     }
 
 
