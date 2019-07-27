@@ -1,7 +1,5 @@
-package io.learnJava.MyXO.model.model;
+package io.learnJava.MyXO.model;
 
-import io.learnJava.MyXO.model.Board;
-import io.learnJava.MyXO.model.Figure;
 import io.learnJava.MyXO.model.exceptions.AlreadyOccupiedException;
 import io.learnJava.MyXO.model.exceptions.InvalidPointerException;
 import org.junit.Test;

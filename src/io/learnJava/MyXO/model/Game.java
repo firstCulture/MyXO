@@ -7,14 +7,14 @@ public class Game {
 
     private final Board board;
 
-    private final String name;
+    private final String gameName;
 
     public Game(final Player[] player,
                 final Board board,
-                final String name) {
+                final String gameName) {
         this.player = player;
         this.board = board;
-        this.name = name;
+        this.gameName = gameName;
     }
 
     public Player[] getPlayer() {
@@ -25,8 +25,8 @@ public class Game {
         return board;
     }
 
-    public String getName() {
-        return name;
+    public String getGameName() {
+        return gameName;
     }
 
 }
