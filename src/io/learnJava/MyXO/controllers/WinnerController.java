@@ -12,33 +12,47 @@ public class WinnerController {
     public Figure getWinner(final Board board) throws InvalidPointerException {
 
         for (int i = 0; i < 3; i++) {
-            if (check(board, new Point(i, 0), new Point(i, 1), new Point(i, 2))) {
+            if (check(board, new Point(i, 0), p -> new Point(p.x, p.y + 1))) {
                 return board.getFigure(new Point(i, 0));
             }
         }
         for (int i = 0; i < 3; i++) {
-            if (check(board, new Point(0, i), new Point(1, i), new Point(2, i))) {
+            if (check(board, new Point(0, i),  p -> new Point(p.x + 1, p.y))) {
                 return board.getFigure(new Point(0, i));
             }
         }
-        if (check(board, new Point(0, 0), new Point(1, 1), new Point(2, 2))) {
+        if (check(board, new Point(0, 0),  p -> new Point(p.x + 1, p.y + 1))) {
             return board.getFigure(new Point(0, 0));
         }
-        if (check(board, new Point(0, 2), new Point(1, 1), new Point(2, 0))) {
+        if (check(board, new Point(0, 2), p -> new Point(p.x + 1, p.y - 1))) {
             return board.getFigure(new Point(1, 1));
         }
         return null;
     }
 
-    private boolean check(Board board, final Point p1, final Point p2, final Point p3) throws InvalidPointerException {
-
-        if (board.getFigure(p1) == null) {
-            return false;
-        } else if (board.getFigure(p1) == board.getFigure(p2) &&
-                board.getFigure(p1) == board.getFigure(p3)) {
+    private boolean check(final Board board,
+                          final Point currentPoint,
+                          final IPointerGenerator pointerGenerator) {
+        final Figure currentFigure;
+        final Figure nextFigure;
+        final Point nextPoint = pointerGenerator.next(currentPoint);
+        try {
+            currentFigure = board.getFigure(currentPoint);
+            nextFigure = board.getFigure(nextPoint);
+        } catch (final InvalidPointerException e) {
             return true;
         }
-        return false;
+
+        if (currentFigure == null) return false;
+
+        if (currentFigure != nextFigure) return false;
+
+        return check(board, nextPoint, pointerGenerator);
+    }
+
+    private interface IPointerGenerator {
+
+        Point next(final Point point);
     }
 
 }
