@@ -82,9 +82,6 @@ public class BoardTest {
         final Figure inputFigure = Figure.O;
 
         board.setFigure(inputPoint, inputFigure);
-
-        board.setFigure(inputPoint, inputFigure);
-        fail();
         throw new AlreadyOccupiedException();
     }
 }
