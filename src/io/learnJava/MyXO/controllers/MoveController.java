@@ -16,8 +16,9 @@ public class MoveController {
 
         if (board.getFigure(point) != null) {
             throw new AlreadyOccupiedException();
+        } else {
+            board.setFigure(point, figure);
         }
-        board.setFigure(point, figure);
     }
 
 }

@@ -30,7 +30,6 @@ public class Board {
     }
 
     public void setFigure(final Point point, final Figure figure) throws InvalidPointerException {
-
         if (!checkPoint(point)) {
             throw new InvalidPointerException();
         }

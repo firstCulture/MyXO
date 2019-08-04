@@ -2,13 +2,14 @@ package io.learnJava.MyXO.controllers;
 
 import io.learnJava.MyXO.model.Board;
 import io.learnJava.MyXO.model.Figure;
+import io.learnJava.MyXO.model.exceptions.AlreadyOccupiedException;
 import io.learnJava.MyXO.model.exceptions.InvalidPointerException;
 
 import java.awt.*;
 
 public class CurrentMoveController {
 
-    public Figure currentMove(final Board board) throws InvalidPointerException {
+    public Figure currentMove(final Board board) throws InvalidPointerException  {
         int countFigures = 0;
         for (int x = 0; x < board.getSize(); x++) {
             countFigures += countFigureInTheRow(board, x);
